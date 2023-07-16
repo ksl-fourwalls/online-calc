@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fancy Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    .display {
+      width: calc(300px - 20px);
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 24px;
+      text-align: right;
+      border: none;
+      background-color: #d1dce6;
+      box-shadow: none;
+      outline: none;
+    }
+
+    .buttons-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      border: none;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .button:active {
+      background-color: #ccc;
+    }
+
+    .operator-button {
+      background-color: #f0a500;
+      color: #fff;
+    }
+
+    .operator-button:hover {
+      background-color: #d38e00;
+    }
+
+    .operator-button:active {
+      background-color: #ae6e00;
+    }
+
+    .equal-button {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .equal-button:hover {
+      background-color: #45a245;
+    }
+
+    .equal-button:active {
+      background-color: #3e893e;
+    }
+
+    .clear-button {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    .clear-button:hover {
+      background-color: #ee302e;
+    }
+
+    .clear-button:active {
+      background-color: #cc2927;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" class="display" disabled>
+    <div class="buttons-container">
+      <button class="button clear-button" onclick="clearInput()"><i class="fas fa-backspace"></i></button>
+      <button class="button" onclick="appendInput('7')">7</button>
+      <button class="button" onclick="appendInput('8')">8</button>
+      <button class="button" onclick="appendInput('9')">9</button>
+      <button class="button" onclick="appendInput('/')"><i class="fas fa-divide"></i></button>
+      <button class="button" onclick="appendInput('4')">4</button>
+      <button class="button" onclick="appendInput('5')">5</button>
+      <button class="button" onclick="appendInput('6')">6</button>
+      <button class="button" onclick="appendInput('*')"><i class="fas fa-times"></i></button>
+      <button class="button" onclick="appendInput('1')">1</button>
+      <button class="button" onclick="appendInput('2')">2</button>
+      <button class="button" onclick="appendInput('3')">3</button>
+      <button class="button" onclick="appendInput('-')"><i class="fas fa-minus"></i></button>
+      <button class="button" onclick="appendInput('0')">0</button>
+      <button class="button" onclick="appendInput('.')">.</button>
+      <button class="button operator-button" onclick="getresult()"><i class="fas fa-equals"></i></button>
+      <button class="button operator-button" onclick="appendInput('+')"><i class="fas fa-plus"></i></button>
+      <button class="button" onclick="appendInput('(')">(</button>
+      <button class="button" onclick="appendInput(')')">)</button>
+      <button class="button" onclick="appendInput('sqrt(')"><i class="fas fa-square-root-alt"></i></button>
+      <button class="button" onclick="appendInput('pow(')"><i class="fas ">x<sup>2</sup></i></button>
+      <button class="button" onclick="appendInput('log(')"><i class="fas">log</i></button>
+      <button class="button" onclick="appendInput('exp(')"><i class="fas">exp</i></button>
+      <button class="button" onclick="appendInput('log10(')"><i class="fas">log10</i></button>
+
+
+    </div>
+
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+  <script>
+    const display = document.getElementById('display');
+
+    function appendInput(value) {
+      display.value += value;
+    }
+
+    function clearInput() {
+      display.value = '';
+    }
+
+    function getresult() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
